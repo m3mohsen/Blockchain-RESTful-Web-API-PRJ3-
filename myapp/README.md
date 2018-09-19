@@ -15,12 +15,12 @@ URL: http://localhost:8000/block/0
 Response:
 
     {
-"hash":"49cce61ec3e6ae664514d5fa5722d86069cf981318fc303750ce66032d0acff3",
-"height":0,
-"body":"First block in the chain - Genesis block",
-"time":"1530311457",
-"previousBlockHash":""
-}
+     "hash":"49cce61ec3e6ae664514d5fa5722d86069cf981318fc303750ce66032d0acff3",
+     "height":0,
+     "body":"First block in the chain - Genesis block",
+     "time":"1530311457",
+     "previousBlockHash":""
+    }
 
 
 ### POST
@@ -28,8 +28,8 @@ The web API contains a POST endpoint that allows posting a new block with the da
 URL: http://localhost:8000/block
 
     {
-      "body": "Testing block with test string data"
-}
+     "body": "Testing block with test string data"
+    }
 The response for the endpoint is a block object in JSON format.
 
 
