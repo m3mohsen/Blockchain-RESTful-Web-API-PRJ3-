@@ -37,7 +37,7 @@ The response for the endpoint is a block object in JSON format.
 
 Install all the required js packages:
 
-```npm install```
+    npm install
 
 Run the code
 
@@ -48,7 +48,7 @@ Run the code
 
 Use curl to create a new block
 
-```curl -d '{"body":"Testing block with test string data"}' -H "Content-Type: application/json" -X POST http://localhost:8000/block```
+    curl -d '{"body":"Testing block with test string data"}' -H "Content-Type: application/json" -X POST http://localhost:8000/block```
 
 Use curl to retreive a block
 
