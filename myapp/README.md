@@ -14,7 +14,7 @@ URL: http://localhost:8000/block/0
 
 Response:
 
-{
+    {
 "hash":"49cce61ec3e6ae664514d5fa5722d86069cf981318fc303750ce66032d0acff3",
 "height":0,
 "body":"First block in the chain - Genesis block",
@@ -27,7 +27,7 @@ Response:
 The web API contains a POST endpoint that allows posting a new block with the data payload option to add data to the block body. Block body should support a string of text.
 URL: http://localhost:8000/block
 
-{
+    {
       "body": "Testing block with test string data"
 }
 The response for the endpoint is a block object in JSON format.
@@ -41,7 +41,7 @@ Install all the required js packages:
 
 Run the code
 
-```node index.js```
+    node index.js
 
 
 ## Running the tests
@@ -52,19 +52,19 @@ Use curl to create a new block
 
 Use curl to retreive a block
 
-```curl -i -H "Accept: application/json" "http://127.0.0.1:8000/block/0"```
+    curl -i -H "Accept: application/json" "http://127.0.0.1:8000/block/0"
 
 ## Extra test cases
 
 Use curl to create an invalid block
 
-```curl -d '{"New Block":" "}' -H "Content-Type: application/json" -X POST http://localhost:8000/block```
+    curl -d '{"New Block":" "}' -H "Content-Type: application/json" -X POST http://localhost:8000/block```
 
 Use curl to retreive an invalid block
 
-```curl -i -H "Accept: application/json" "http://127.0.0.1:8000/block/1000000"```
+    curl -i -H "Accept: application/json" "http://127.0.0.1:8000/block/1000000"
 
-```curl -i -H "Accept: application/json" "http://127.0.0.1:8000/block/test"```
+    curl -i -H "Accept: application/json" "http://127.0.0.1:8000/block/test"
 
 ## Acknowledgments
 
