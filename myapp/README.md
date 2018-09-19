@@ -2,13 +2,13 @@
 
 Udacity's project #3: RESTful Web API
 
-# Node.js framework
+## Node.js framework
 
 Express.js
 
-# Endpoint documentation
+## Endpoint documentation
 
-## GET
+### GET
 The web API contains a GET endpoint that responds to a request using a URL path with a block height parameter or properly handles an error if the height parameter is out of bounds.
 URL: http://localhost:8000/block/0
 
@@ -23,7 +23,7 @@ Response:
 }
 
 
-## POST
+### POST
 The web API contains a POST endpoint that allows posting a new block with the data payload option to add data to the block body. Block body should support a string of text.
 URL: http://localhost:8000/block
 
@@ -33,7 +33,7 @@ URL: http://localhost:8000/block
 The response for the endpoint is a block object in JSON format.
 
 
-### Running the code
+## Running the code
 
 Install all the required js packages:
 
@@ -54,7 +54,7 @@ Use curl to retreive a block
 
 ```curl -i -H "Accept: application/json" "http://127.0.0.1:8000/block/0"```
 
-### Extra test cases
+## Extra test cases
 
 Use curl to create an invalid block
 
@@ -68,6 +68,6 @@ Use curl to create a new block
 
 ## Acknowledgments
 
-* [1] Using Async Await in Express with Node 9
-https://medium.com/@Abazhenov/using-async-await-in-express-with-node-8-b8af872c0016
+* Using Async Await in Express with Node 9
+(https://medium.com/@Abazhenov/using-async-await-in-express-with-node-8-b8af872c0016)
 
