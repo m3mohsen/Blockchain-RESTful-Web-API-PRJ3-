@@ -48,7 +48,7 @@ Run the code
 
 Use curl to create a new block
 
-```curl -d '{"body": "Testing block with test string data"}' -H "Content-Type: applicintp://127.0.0.1:8000/block```
+```curl -d '{"body":"Testing block with test string data"}' -H "Content-Type: application/json" -X POST http://localhost:8000/block```
 
 Use curl to retreive a block
 
@@ -58,13 +58,13 @@ Use curl to retreive a block
 
 Use curl to create an invalid block
 
-```curl -d '{"Random Block": ""}' -H "Content-Type: applicintp://127.0.0.1:8000/block```
+```curl -d '{"New Block":" "}' -H "Content-Type: application/json" -X POST http://localhost:8000/block```
 
-User curl to retreive an invalid block
-
-Use curl to create a new block
+Use curl to retreive an invalid block
 
 ```curl -i -H "Accept: application/json" "http://127.0.0.1:8000/block/1000000"```
+
+```curl -i -H "Accept: application/json" "http://127.0.0.1:8000/block/test"```
 
 ## Acknowledgments
 

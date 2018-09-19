@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-app.use(express.json());
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 // Import classes from simpleChain
@@ -18,12 +17,18 @@ const asyncMiddleware = fn =>
 app.get('/block/:blockHeight([0-9]+)', asyncMiddleware(async (req, res, next) => {
     blockHeight =req.params.blockHeight
     blockchainHeight = await blockchain.getBlockHeight()
+
+    // Check of out of bound blocks
     if(blockHeight > blockchainHeight)
         res.send("Invalid Block");
-    const block = await blockchain.getBlock(req.params.blockHeight)
-    res.json(block);
+    else{
+        // Retreive the block
+        const block = await blockchain.getBlock(req.params.blockHeight)
+        res.json(block);
+    }
 }));
 
+app.use(express.json());
 // Post endpoint to create new blocks
 app.post('/block', asyncMiddleware(async (req, res, next) => {
     const content = req.body.body
