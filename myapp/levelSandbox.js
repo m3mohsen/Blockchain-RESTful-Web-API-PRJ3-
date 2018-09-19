@@ -39,8 +39,8 @@ function addDataToLevelDB(value) {
         }).on('error', function(err) {
             return console.log('Unable to read data stream!', err);
         }).on('close', function() {
-        console.log('Block #' + i);
-        addLevelDBData(i, value);
+            console.log('Block #' + i);
+            addLevelDBData(i, value);
         });
 }
 

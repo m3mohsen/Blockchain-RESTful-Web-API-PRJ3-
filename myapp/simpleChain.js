@@ -71,6 +71,8 @@ class Blockchain{
          storage.addDataToLevelDB(JSON.stringify(newBlock));
          console.log("Finish adding the Genesis block");
     }
+
+    return newBlock.height
   }
 
   // Get a promise for block height
@@ -167,4 +169,4 @@ class Blockchain{
 
 }
 
-module.exports = { Blockchain };
+module.exports = { Blockchain, Block };

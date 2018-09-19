@@ -1,20 +1,50 @@
 const express = require('express')
 const app = express()
+app.use(express.json());
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
+// Import classes from simpleChain
 const simpleChain = require('./simpleChain');
 let blockchain = new simpleChain.Blockchain();
 
-app.get('/', (req, res) => res.send('Hello World!'))
+// Middleware to handle async function calls
+const asyncMiddleware = fn =>
+  (req, res, next) => {
+    Promise.resolve(fn(req, res, next))
+      .catch(next);
+  };
 
-app.get('/block/([0-9]*)', function (req, res) {
-    console.log(blockchain.getBlock(0))
-    res.setHeader('Content-Type', 'application/json');
-    res.send(blockchain.getBlock(0)+1)
-  })
+// Get endpoint to serve the blocks
+app.get('/block/:blockHeight([0-9]+)', asyncMiddleware(async (req, res, next) => {
+    blockHeight =req.params.blockHeight
+    blockchainHeight = await blockchain.getBlockHeight()
+    if(blockHeight > blockchainHeight)
+        res.send("Invalid Block");
+    const block = await blockchain.getBlock(req.params.blockHeight)
+    res.json(block);
+}));
 
-app.post('/block', function (req, res) {
-  res.send('Got a POST request')
-})
+// Post endpoint to create new blocks
+app.post('/block', asyncMiddleware(async (req, res, next) => {
+    const content = req.body.body
+
+    // Check for invalid & empty blocks
+    if(content === undefined || content === null || content === ""){
+        console.log("Invalid pyaload")
+        res.send("Invalid Payload");
+    }
+    else{
+        // Create the new block
+        let newBlock = new simpleChain.Block(content)
+        let newBlockHeight  = await blockchain.addBlock(newBlock)
+        console.log("New Block height " + newBlockHeight)
+
+        // Retrieve the newly created block
+        await delay(100);
+        newBlockRet = await blockchain.getBlock(newBlockHeight)
+        res.json(newBlockRet);
+    }
+}));
 
 app.listen(8000, function(){
     console.log('Example app listening on port 8000!')
